@@ -15,43 +15,134 @@ ssh roy@user-bauhaus.cs.hartford.edu
 ### Question 1
 Write a script that recursively copies all the files in one folder to another folder. The names of both folders should be arguments to the script. (_`12` pts_)
 
+<<<<<<< Updated upstream
 ```
+=======
+```bash
+Copy_Files(){
+	startFolder=$1
+	endFolder=$2
+	
+	cp -R $startFolder/* $endFolder/
+	
+	echo "All files have been copied into $endFolder folder"
+}	
+	echo "Copying all files from $1 folder to $2 folder"
+	Copy_Files "$@"
+>>>>>>> Stashed changes
 ```
 
 ### Question 2
 Write a script that checks whether a program exists on your machine. If it doesn’t, it should try to fetch the program via `apt install`. (_`12` pts_)
 
+<<<<<<< Updated upstream
 ```
+=======
+```bash
+Check_Programs(){
+	program=$1
+
+if command -v $1 >/dev/null 2>&1
+then
+	echo "$1 program is installed have a good day"
+	exit 1
+else
+	echo "$1 program is not installed, begining installation now..."
+	sudo apt-get update
+	sudo apt-get install $1 -y
+	exit 1
+fi
+
+}	
+	echo "Checking if $1 program is installed..."
+	Check_Programs "$@"
+>>>>>>> Stashed changes
 ```
 
 ### Question 3
 Write a command that will create an empty file with a `.txt` extension named after the current folder. (_`12` pts_)
 
+<<<<<<< Updated upstream
 ```
+=======
+```bash
+New_Text_File(){
+	fileName=${PWD##*/}
+	
+	touch $fileName.txt
+}
+>>>>>>> Stashed changes
 ```
 
 ### Question 4
 Write a command that will recursively remove files with the `.thumbs` extension from the current folder. (_`12` pts_)
 
+<<<<<<< Updated upstream
 ```
+=======
+```bash
+Remove_Thumbs(){
+	
+	rm -r *.thumbs
+}	
+>>>>>>> Stashed changes
 ```
 
 ### Question 5
 Write a command that will recursively remove empty folders from the current folder. (_`12` pts_)
 
+<<<<<<< Updated upstream
 ```
+=======
+```bash
+Remove_Empty(){
+	
+	find . -type d -empty -delete
+}	
+>>>>>>> Stashed changes
 ```
 
 ### Question 6
 Write a script that reports every file name in a folder as two items: the filename and its extension. Each item should appear on a new line. (_`12` pts_)
 
+<<<<<<< Updated upstream
 ```
+=======
+```bash
+Report_Files(){
+	for file in *;do
+	printf "${file%%.*}\n"
+	printf "${file#*.}\n"
+	done
+}	
+	Report_Files "$@"
+>>>>>>> Stashed changes
 ```
 
 ### Question 7
 Write a script that requests the user answer `y` or `n` to a prompt, and only exits when either of the two responses is entered. The user’s response should be echoed to the screen _before_ the program exits. (_`28` pts_)
 
+<<<<<<< Updated upstream
 ```
+=======
+```bash
+Prompt(){
+while true; do
+	read -p "Do you like apples? Y or N?" yn
+	case $yn in
+		[Yy]) 
+			echo "You answered yes, I like apples too"
+			exit 1 ;;
+		[Nn]) 
+			echo "You answered no, thats too bad"
+			exit 1 ;;
+		*)
+			echo "Type Y or N to answer" ;;
+	esac
+done
+}	
+	Prompt
+>>>>>>> Stashed changes
 ```
 
 ## ❖・Due・❖
